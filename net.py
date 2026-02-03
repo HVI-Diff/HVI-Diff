@@ -35,9 +35,9 @@ class FDenseLayer(nn.Module):
 
 
 
-class SRDB(nn.Module):
+class SDAB(nn.Module):
     def __init__(self, nChannels, nDenselayer=3, growthRate=16):
-        super(SRDB, self).__init__()
+        super(SDAB, self).__init__()
         nChannels_ = nChannels
         modules = []
         for i in range(nDenselayer):
@@ -58,9 +58,9 @@ class SRDB(nn.Module):
         out = out + x
         return out
 
-class FRDB(nn.Module):
+class PCCM(nn.Module):
     def __init__(self, nChannels, nDenselayer=1, growthRate=32):
-        super(FRDB, self).__init__()
+        super(PCCM, self).__init__()
         nChannels_1 = nChannels
         nChannels_2 = nChannels
         modules1 = []
@@ -102,9 +102,9 @@ class FRDB(nn.Module):
         return out
 
 
-class SRDB(nn.Module):
+class CPB(nn.Module):
     def __init__(self, nChannels, growthRate=64):
-        super(SRDB, self).__init__()
+        super(CPB, self).__init__()
         nChannels_ = nChannels
         modules1 = []
         self.conv1 = nn.Conv2d(nChannels, growthRate, kernel_size=1, padding=(1 - 1) // 2,
@@ -169,7 +169,7 @@ class SRDB(nn.Module):
         out = x_0 + x
         return out
 
-class FRDAM(nn.Module):
+class PDID(nn.Module):
     def __init__(self, width=32):
         super().__init__()
         self.dwt = DWT()
@@ -240,13 +240,13 @@ class FRDAM(nn.Module):
 
 
 
-class CIDNet(nn.Module, PyTorchModelHubMixin):
+class DIFFNet(nn.Module, PyTorchModelHubMixin):
     def __init__(self,
                  channels=[36, 36, 72, 144],
                  heads=[1, 2, 4, 8],
                  norm=False
                  ):
-        super(CIDNet, self).__init__()
+        super(DIFFNet, self).__init__()
 
         [ch1, ch2, ch3, ch4] = channels
         [head1, head2, head3, head4] = heads
